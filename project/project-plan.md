@@ -1,8 +1,8 @@
 # Project Plan
-The main Goal of the project is to find the relation of road accident and the temparature because in recent times the road accident has incresed and the aim is to find the relation between temparature and the rate of the accident.
+The primary objective of the project is to investigate the correlation between temperature and road accidents, as there has been a recent increase in accidents, and the goal is to determine how temperature influences accident rates..
 ## Title
 <!-- Give your project a short title. -->
-Analyzing the changing pattern and realtionship of road accident and the average temparature of Germany.
+Examining the evolving trends and connection between road accidents and the average temperature in Germany.
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
