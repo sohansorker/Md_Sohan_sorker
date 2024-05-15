@@ -14,8 +14,7 @@ Examining the evolving trends and connection between road accidents and the aver
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-I will try to find the dataset and make some preprocessing such as removing null values, i have the data of average temparature daily and I have the monthly data of accident, so I have to make it average and see the changes of temparature and the changes of road accident and see the relations.
-
+I will try to find the dataset 
 
 
 
