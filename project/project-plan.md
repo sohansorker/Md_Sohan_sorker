@@ -23,3 +23,12 @@ I will try to find the dataset
 * Data Type: txt
 
 
+## Work Packages
+
+<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
+
+1. Data collection and Pre-processing [#1][i1]
+2. Feature engineering [#2][i2]
+3. Statistical modeling [#3][i3]
+4. Interpretation and insights [#4][i4]
+5. Reporting on findings [#5][i5]
