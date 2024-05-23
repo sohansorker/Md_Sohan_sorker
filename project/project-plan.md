@@ -15,7 +15,7 @@ Examining the evolving trends and connection between road accidents and the aver
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
 
-I will try to find the dataset 
+I will search for the dataset and perform initial preprocessing, such as eliminating null values. I have daily average temperature data and monthly road accident statistics, which I need to average out to analyze the variations in temperature and road accidents and explore their relationship.
 
 ### Datasource 1:Federal Statistical Office of Germany
 Metadata URL 1: https://www.destatis.de/
