@@ -1,6 +1,6 @@
 pipeline GoodsPipeline
 {
-    // Sequence of operations for the data pipeline
+
     GoodsExtractor
         -> GoodsTextFileInterpreter
         -> GoodsCSVInterpreter 
@@ -13,51 +13,43 @@ pipeline GoodsPipeline
         -> ConvertUppercaseFebruar
         -> GoodsLoader;
 
-    // Block for extracting data via HTTP
     block GoodsExtractor oftype HttpExtractor    
     {
+
+        // Here, we specify the URL where the file shall be downloaded from.
         url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
     }
 
-    // Block for interpreting text files
-    block GoodsTextFileInterpreter oftype TextFileInterpreter 
-    { 
-        encoding: "latin3";
-    }
-
-    // Block for interpreting CSV files
+    block GoodsTextFileInterpreter oftype TextFileInterpreter { encoding: "latin3";}
     block GoodsCSVInterpreter oftype CSVInterpreter 
     {
         delimiter: ";";
     }
+    
 
-    // Block for deleting specific rows
     block GoodsRowDeleter oftype RowDeleter
     {
         delete: [row 1, row 2, row 3, row 4, row 5, row 6, row 7, row 41338, row 41339];
     }
+    // SELECT ONLY A SUBSET OF COLUMNS
 
-    // Block for selecting data columns
     block GoodsSelector oftype CellRangeSelector
     {
         select: range A1:AU*;
     }
-
-    // Block for writing headers for transported goods
+    
     block TransportedGoodsHeaderWriter oftype CellWriter
     {
         at: range A1:E1;
         write: ["year", "month", "goods_id", "goods_name", "goods_source"];
     }
-
-    // Block for writing headers for quantities
     block QuantityNameHeaderWriter oftype CellWriter
     {
         at: range AT1:AU1;
-        write: ["abroad", "total"];
+        write: [ "abroad", "total"];
     }
-
-    // Block for interpreting the goods table
+  
+   
     block GoodsTableInterpreter oftype TableInterpreter 
     {
         header: true;
@@ -68,36 +60,34 @@ pipeline GoodsPipeline
             "goods_name" oftype text,
             "goods_source" oftype text, 
             "abroad" oftype positiveInteger,
-            "total" oftype positiveInteger,
+            "total" oftype positiveInteger,  
         ];
     }
-
-    // Constraint and transformation blocks for data types and modifications
+    
+    // Numeric values must be positive integers
     valuetype positiveInteger oftype integer
     {
         constraints: [setPositiveInteger];
     }
-
     constraint setPositiveInteger on decimal:
         value >= 0;
 
+    // Starts with NST7-
     valuetype nst7 oftype text
     {
         constraints: [setNST7];
     }
-
     constraint setNST7 oftype RegexConstraint
     {
         regex: /^NST7-[A-Z0-9]{3}$/;
     }
-
+    // Uppercase MONTH
     valuetype GermanMonth oftype text
     {
         constraints: [setGermanMonth];
     }
-
-    constraint setGermanMargin oftype Allovius on text {
-        list:['Januar','Februar','March','April','May','June','July','August','September','October','November','December'];
+    constraint setGermanMonth oftype AllowlistConstraint {
+        allowlist:['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
     }
 
     transform ConvertUppercase 
@@ -107,31 +97,31 @@ pipeline GoodsPipeline
 
         outputName: inputName replace /Januar/ with 'JANUAR' ;
     }
-    
     block ConvertUppercaseMonth oftype TableTransformer
     {
         inputColumns: ['month'];
         outputColumn: 'month';
         use: ConvertUppercase;
     }
-
-    transform ConvertUppercaseFebruary
+    transform ConvertUppercaseFebruar
     {
         from inputName oftype text;
         to outputName oftype text;
         outputName: inputName replace /Februar/ with 'FEBRUAR';
     }
-    
     block ConvertUppercaseFebruar oftype TableTransformer
     {
-    inputColumns: ['month'];
-    outputColumn: 'month';
-    use: ConvertUppercaseFebruary;
+        inputColumns: ['month'];
+        outputColumn: 'month';
+        use: ConvertUppercaseFebruar;
     }
 
-    // Block for loading data into SQLite
+    // ============================================================================
     block GoodsLoader oftype SQLiteLoader {
         table: "goods";
         file: "goodsTransportedByTrain.sqlite";
     }
+
+    
+
 }
