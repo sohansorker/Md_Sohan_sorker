@@ -45,7 +45,7 @@ class Pipeline:
 
     def collect_additional_data(self):
         # collect additional data from another URL
-        url2 = "https://www-genesis.destatis.de/genesisWS/rest/2020/data/tablefile?username=DE9WS28QIO&password=Sohanhasan@123&name=46241-0006&area=all&compress=false&transpose=false&startyear=2018&endyear=2020&language=en"
+        url2 = "https://www-genesis.destatis.de/genesisWS/rest/2020/data/tablefile?username=DE9WS28QIO&password=Sohanhasan@123&name=46241-0021&area=all&compress=false&transpose=false&startyear=2018&endyear=2020&language=en"
         data1 = pd.read_csv(url2, sep=';', skiprows=6, skipfooter=3, engine='python')
         df = data1
         df_transposed = df.T
