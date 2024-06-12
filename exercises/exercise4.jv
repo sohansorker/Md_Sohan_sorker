@@ -32,7 +32,7 @@ pipeline TemperaturePipeline {
     }
 
     block TemperatureColumnDeleter oftype ColumnDeleter {
-        delete: [column F, column G, column H, column I,  column L, column M, column N, column O];
+        delete: [column F, column G, column H, column I];
     }
 
     // Reshape data
