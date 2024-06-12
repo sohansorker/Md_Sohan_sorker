@@ -1,9 +1,10 @@
 // Transform data: syntax: https://jvalue.github.io/jayvee/docs/user/transforms
-transform CelsiusToFahrenheit {
-    from tempCelsius oftype decimal;
-    to tempFahrenheit oftype decimal;
+transform TempConvert
+{
+  from celsius oftype decimal;
+  to fahrenheit oftype decimal;
 
-    tempFahrenheit: ((tempCelsius * 9) / 5) + 32 ;
+  fahrenheit: (celsius * 9/5) + 32;
 }
 
 pipeline TemperaturePipeline {
@@ -51,19 +52,15 @@ pipeline TemperaturePipeline {
     block TemperatureTableTransformer oftype TableTransformer {
         inputColumns: ['Temperatur'];
         outputColumn: 'Temperatur';
-        use: CelsiusToFahrenheit;
+        use: TempConvert;
     }
 
     block BatterieTemperatureTableTransformer oftype TableTransformer {
         inputColumns: ['Batterietemperatur'];
         outputColumn: 'Batterietemperatur';
-        use: CelsiusToFahrenheit;
+        use: TempConvert;
     }
-    transform CelsiusToFahrenheit   {
-        from Celsius oftype decimal;
-        to Fahrenheit oftype decimal;
-        Fahrenheit: (Celsius * 9/5) + 32;
-    }
+    
 
     // Write data into a SQLite database called “temperatures.sqlite”, in the table “temperatures”
     block TemperatureSQLiteLoader oftype SQLiteLoader {
