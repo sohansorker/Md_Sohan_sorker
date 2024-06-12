@@ -59,6 +59,11 @@ pipeline TemperaturePipeline {
         outputColumn: 'Batterietemperatur';
         use: CelsiusToFahrenheit;
     }
+    transform CelsiusToFahrenheit   {
+        from Celsius oftype decimal;
+        to Fahrenheit oftype decimal;
+        Fahrenheit: (Celsius * 9/5) + 32;
+    }
 
     // Write data into a SQLite database called “temperatures.sqlite”, in the table “temperatures”
     block TemperatureSQLiteLoader oftype SQLiteLoader {
