@@ -55,7 +55,7 @@ pipeline TemperaturePipeline {
 
     // Reshape data
     block TemperatureTableInterpreter oftype TableInterpreter {
-        header: false;
+        header: true;
         columns: [
             "id" oftype integer,
             "producer" oftype text,
