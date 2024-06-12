@@ -16,7 +16,7 @@ pipeline GoodsPipeline
     block GoodsExtractor oftype HttpExtractor    
     {
 
-        // Here, we specify the URL where the file shall be downloaded from.
+        
         url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
     }
 
@@ -31,7 +31,7 @@ pipeline GoodsPipeline
     {
         delete: [row 1, row 2, row 3, row 4, row 5, row 6, row 7, row 41338, row 41339];
     }
-    // SELECT ONLY A SUBSET OF COLUMNS
+   
 
     block GoodsSelector oftype CellRangeSelector
     {
