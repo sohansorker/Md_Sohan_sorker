@@ -34,11 +34,11 @@ pipeline TemperaturePipeline {
     block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
     block TemperaturesCellWriter1 oftype CellWriter {
         at:range A1:E1; 
-        write:["id", // “Geraet” to “id”
-        "producer",  // “Hersteller” to “producer”
-        "model",     // “Model” to “model”
-        "month",     // “Monat” to “month”
-        "temperature"// “Temperatur in °C (DWD)” to “temperature”
+        write:["id", 
+        "producer",  
+        "model",     
+        "month",     
+        "temperature"
         ];
     }
 
@@ -63,8 +63,8 @@ pipeline TemperaturePipeline {
     }
 
     block TemperatureTableTransformer oftype TableTransformer {
-        inputColumns: ['temperatur'];
-        outputColumn: 'temperatur';
+        inputColumns: ['temperature'];
+        outputColumn: 'temperature';
         use: TempConvert;
     }
 
