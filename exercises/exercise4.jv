@@ -36,19 +36,33 @@ pipeline TemperaturePipeline {
         delete: [column F, column G, column H, column I];
         }
     block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
-   
+    block TemperaturesCellWriter1 oftype CellWriter {
+        at:range A1:E1; 
+        write:["id", // “Geraet” to “id”
+        "producer",  // “Hersteller” to “producer”
+        "model",     // “Model” to “model”
+        "month",     // “Monat” to “month”
+        "temperature"// “Temperatur in °C (DWD)” to “temperature”
+        ];
+    }
+
+    // “Batterietemperatur in °C” to “battery_temperature”
+    block TemperaturesCellWriter2 oftype CellWriter { 
+        at:cell J1; 
+        write:["battery_temperature"];
+        }
+
 
     // Reshape data
     block TemperatureTableInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "Geraet" oftype integer,
-            "Hersteller" oftype text,
-            "Model" oftype text,
-            "Monat" oftype integer,
-            "Temperatur" oftype decimal,
-            "Batterietemperatur" oftype decimal,
-            "Geraet aktiv" oftype text,
+            "id" oftype integer,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype integer,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal,
         ];
     }
 
@@ -77,6 +91,8 @@ pipeline TemperaturePipeline {
         ->TemperatureFileInterpreter
         ->TemperatureCSVInterpreter
         ->TemperatureColumnDeleter 
+        -> TemperaturesCellWriter1
+        -> TemperaturesCellWriter2
         ->ColDataSelector
         ->TemperatureTableInterpreter
         ->TemperatureTableTransformer
