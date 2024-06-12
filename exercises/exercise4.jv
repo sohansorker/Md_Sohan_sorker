@@ -31,10 +31,6 @@ pipeline TemperaturePipeline {
         delimiter: ";";
     }
 
-    block TemperatureColumnDeleter oftype ColumnDeleter {
-
-        delete: [column F, column G, column H, column I];
-        }
     block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
     block TemperaturesCellWriter1 oftype CellWriter {
         at:range A1:E1; 
@@ -73,8 +69,8 @@ pipeline TemperaturePipeline {
     }
 
     block BatterieTemperatureTableTransformer oftype TableTransformer {
-        inputColumns: ['Batterietemperatur'];
-        outputColumn: 'Batterietemperatur';
+        inputColumns: ['battery_temperature'];
+        outputColumn: 'battery_temperature';
         use: TempConvert;
     }
     
@@ -90,7 +86,6 @@ pipeline TemperaturePipeline {
         ->TemperatureFilePicker
         ->TemperatureFileInterpreter
         ->TemperatureCSVInterpreter
-        ->TemperatureColumnDeleter 
         -> TemperaturesCellWriter1
         -> TemperaturesCellWriter2
         ->ColDataSelector
