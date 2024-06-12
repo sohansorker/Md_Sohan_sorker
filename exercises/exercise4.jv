@@ -32,8 +32,11 @@ pipeline TemperaturePipeline {
     }
 
     block TemperatureColumnDeleter oftype ColumnDeleter {
+
         delete: [column F, column G, column H, column I];
-    }
+        }
+    block ColDataSelector oftype CellRangeSelector {select: range A1:K*;}
+   
 
     // Reshape data
     block TemperatureTableInterpreter oftype TableInterpreter {
@@ -73,9 +76,11 @@ pipeline TemperaturePipeline {
         ->TemperatureFilePicker
         ->TemperatureFileInterpreter
         ->TemperatureCSVInterpreter
-        ->TemperatureColumnDeleter
+        ->TemperatureColumnDeleter 
+        ->ColDataSelector
         ->TemperatureTableInterpreter
         ->TemperatureTableTransformer
         ->BatterieTemperatureTableTransformer
         ->TemperatureSQLiteLoader;
+        
 }
