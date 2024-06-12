@@ -63,8 +63,8 @@ pipeline TemperaturePipeline {
     }
 
     block TemperatureTableTransformer oftype TableTransformer {
-        inputColumns: ['Temperatur'];
-        outputColumn: 'Temperatur';
+        inputColumns: ['temperatur'];
+        outputColumn: 'temperatur';
         use: TempConvert;
     }
 
@@ -77,8 +77,8 @@ pipeline TemperaturePipeline {
 
     // Write data into a SQLite database called “temperatures.sqlite”, in the table “temperatures”
     block TemperatureSQLiteLoader oftype SQLiteLoader {
-        table: "temperatures";
-        file: "./temperatures.sqlite";
+        table: 'temperatures';
+        file: 'temperatures.sqlite';
     }
 
     TemperatureExtractor
