@@ -8,7 +8,7 @@ class Test(unittest.TestCase):
     def test_data_pipeline(self):
         BASE_DIR = os.getcwd()
         print("The BASE path is: "+BASE_DIR)
-        DB_PATH = os.path.join(BASE_DIR, "FinalDB.sqlite")
+        DB_PATH = os.path.join(BASE_DIR, 'Data', "FinalDB.sqlite")
         print("The path is: "+DB_PATH)
         
         print(os.path.exists(DB_PATH))
