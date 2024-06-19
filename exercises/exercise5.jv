@@ -1,10 +1,12 @@
 // Filter data for specific zone
-constraint ZoneIDRangeConstraint oftype RangeConstraint { lowerBound: 2001; upperBound: 2001; }
+constraint ZoneIDRangeConstraint oftype RangeConstraint { lowerBound: 1645; upperBound: 1645; }
 valuetype ZoneID oftype integer { constraints: [ ZoneIDRangeConstraint ]; }
 
 // Data validation for geographic coordinates
 constraint GeoCoordinatesRangeConstraint oftype RangeConstraint { lowerBound: -90; upperBound: 90; }
 valuetype GeoCoordinates oftype decimal { constraints: [ GeoCoordinatesRangeConstraint ]; }
+
+// Data validation for stop name to include German umlauts
 
 pipeline GTFSPipeline {
 
