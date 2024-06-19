@@ -7,6 +7,9 @@ constraint GeoCoordinatesRangeConstraint oftype RangeConstraint { lowerBound: -9
 valuetype GeoCoordinates oftype decimal { constraints: [ GeoCoordinatesRangeConstraint ]; }
 
 // Data validation for stop name to include German umlauts
+// Data validation for stop name to include German umlauts
+constraint StopNameConstraint oftype RegexConstraint { regex: /[a-zA-ZäöüÄÖÜß]+/; }
+valuetype StopName oftype text { constraints: [ StopNameConstraint ]; }
 
 pipeline GTFSPipeline {
 
