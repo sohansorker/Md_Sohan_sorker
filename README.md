@@ -54,7 +54,6 @@ Description: This is monthly average air temparature in Germany. In this dataset
 
 
 
-
 ## Project Work
 Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
 
