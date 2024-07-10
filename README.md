@@ -21,8 +21,11 @@ The link between environmental conditions and road safety has consistently drawn
 Metadata URL: https://www.destatis.de/
 
 Data URL: https://www-genesis.destatis.de/genesis/online?language=en&sequenz=statistikTabellen&selectionname=46241#abreadcrumb
+
 Data Type: CSV
+
 Description: The road accident data in Germany. This data also shows that the accident in Indoor and outdoor as well.
+
 License Type: OpenData License
 
 ### Datasource2: climate_environment/CDC
