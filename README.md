@@ -1,17 +1,54 @@
 # Exercise Badges
 
- ![](https://byob.yarr.is/sohansorker/Md_Sohan_sorker/score_ex1) ![](https://byob.yarr.is/sohansorker/Md_Sohan_sorker/score_ex2) ![](https://byob.yarr.is/sohansorker/Md_Sohan_sorker/score_ex3) ![](https://byob.yarr.is/sohansorker/Md_Sohan_sorker/score_ex4) ![](https://byob.yarr.is/sohansorker/Md_Sohan_sorker/score_ex5)
+![](https://byob.yarr.is/apudasm10/made-template-fau/score_ex1) ![](https://byob.yarr.is/apudasm10/made-template-fau/score_ex2) ![](https://byob.yarr.is/apudasm10/made-template-fau/score_ex3) ![](https://byob.yarr.is/apudasm10/made-template-fau/score_ex4) ![](https://byob.yarr.is/apudasm10/made-template-fau/score_ex5)
 
-# Methods of Advanced Data Engineering Template Project
+# Examining the evolving trends and connection between road accidents and the average temperature in Germany.
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+The link between environmental conditions and road safety has consistently drawn attention. In this report, I explore how the average temperature in Germany from 2018 to 2020 correlates with the number of accidents on motorways inside and outside built-up areas. Uncovering this relationship can offer crucial information for creating measures to improve road safety and lessen the effects of harsh weather.
 
-To get started, please follow these steps:
-1. Create your own fork of this repository. Feel free to rename the repository right after creation, before you let the teaching instructors know your repository URL. **Do not rename the repository during the semester**.
-2. Setup the exercise feedback by changing the exercise badge sources in the `README.md` file following the patter `![](https://byob.yarr.is/<github-user-name>/<github-repo>/score_ex<exercise-number>)`. 
-For example, if your user is _myuser_ and your repo is _myrepo_, then update the badge for _exercise 1_ to `![](https://byob.yarr.is/myrepo/myuser/score_ex1)`. Proceed with the remaining badges accordingly.
+
+## Question
+
+1.The changes of the temparature?
+2.How the rate of road accident increasing day by day?
+3.Is there any realtion between road accident and the temparature?
+## Datasources
+
+<!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
+
+### Datasource1: Federal Statistical Office of Germany
+
+Metadata URL: https://www.destatis.de/
+Data URL: https://www-genesis.destatis.de/genesis/online?language=en&sequenz=statistikTabellen&selectionname=46241#abreadcrumb
+Data Type: CSV
+Description: The road accident data in Germany. This data also shows that the accident in Indoor and outdoor as well.
+License Type: OpenData License
+
+### Datasource2: climate_environment/CDC
+
+Metadata URL: https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/
+
+Data URL: https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_01.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_02.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_03.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_04.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_05.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_06.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_07.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_08.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_09.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_10.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_11.txt https://opendata.dwd.de/climate_environment/CDC/regional_averages_DE/monthly/air_temperature_mean/regional_averages_tm_12.txt
+
+Data Type: txt
+
+License Type: OpenData License
+
+Description: This is monthly average air temparature in Germany. In this dataset it also shows that the temparature in state wise.
+
+## Work Packages
+
+<!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
+
+1. Dataset selection
+2. Building an Automated Data Pipelines
+3. Automated Testing
+4. Continuous Integration
+5. Feature Engineering and Analysis
+6. Reporting on findings
+7. Presentation
+
+
 
 
 ## Project Work
